@@ -2,17 +2,28 @@
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
 import { FaWhatsapp } from "react-icons/fa";
 import { IoMdHelp } from "react-icons/io";
 import WhatsAppChatPhone from "./Phone";
-
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
 export default function Need1000Section() {
+  const avatars = [
+    {
+      src: "https://pbs.twimg.com/profile_images/1933222335932477441/2UeTXJXZ_400x400.jpg",
+      name: "Sagar",
+    },
+    { src: "https://randomuser.me/api/portraits/men/32.jpg", name: "Rahul" },
+    { src: "https://randomuser.me/api/portraits/women/44.jpg", name: "Priya" }, 
+    { src: "https://randomuser.me/api/portraits/men/65.jpg", name: "Amit" },
+    { src: "https://randomuser.me/api/portraits/women/68.jpg", name: "Neha" },
+  ];
+
+  const visible = 4;
+
   const rootRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -36,7 +47,6 @@ export default function Need1000Section() {
         },
       });
 
-     
       gsap.from(".phone", {
         y: 90,
         opacity: 0,
@@ -58,14 +68,33 @@ export default function Need1000Section() {
   return (
     <div className="bg-[#FFF4EC] w-full p-1 lg:p-3" ref={rootRef}>
       <section
-        className="w-full bg-[#030201] text-white flex items-start rounded-2xl"
+        className="w-full bg-[#25170D] text-white flex items-start rounded-2xl"
         aria-label="Maya on WhatsApp — Need freelancers"
       >
-        <div className="max-w-[90%] mx-auto w-full px-6 pt-10 lg:pt-[4cm] pb-5">
+        <div className="max-w-[86%] mx-auto w-full px-6 py-5 pb-5">
           <div className="flex flex-col lg:flex-row items-start gap-8 lg:gap-12">
-            
-            <div className="w-full lg:w-1/2 flex items-start">
+            <div className="w-full lg:w-1/2 flex justify-end items-end pt-0 lg:pt-[2.5cm] pl-0 lg:pl-[1cm]">
               <div className="w-full animate-in">
+            
+                <div className="flex items-center gap-4 mb-6 ml-2">
+                  <div className="flex items-center bg-[#FFE5C0] border border-gray-200 rounded-xl px-1 py-1 pr-3">
+                    <div className="flex -space-x-3 items-center ">
+                      {avatars.slice(0, visible).map((a, i) => (
+                        <img
+                          key={i}
+                          src={a.src}
+                          alt={`Avatar of ${a.name}`}
+                          title={a.name}
+                          className="w-7 h-7 rounded-xl ring-2 ring-white border border-gray-100 object-cover"
+                        />
+                      ))}
+                    </div>
+
+                    <span className="ml-1  text-[#25170D] ">
+                      Trusted By Thousands
+                    </span>
+                  </div>
+                </div>
                 <h1
                   className="leading-none font-serif text-[4.5rem] sm:text-[5.5rem] md:text-[6.5rem] lg:text-[9rem] animate-in"
                   style={{ fontFamily: "Fontspring" }}
@@ -75,12 +104,14 @@ export default function Need1000Section() {
                 </h1>
 
                 <div className="mt-6 md:mt-10 animate-in">
-                  <span className="inline-block text-lg sm:text-3xl font-medium text-[#25170D] px-3 py-1.5 rounded-lg bg-[#FFF6EC]">
+                  <span className="inline-block text-lg sm:text-3xl font-medium text-[#25170D] px-3 py-1.5 rounded-lg bg-[#FFE5C0]">
                     Of HRs, Founders & Paying Clients
                   </span>
 
                   <p className="mt-4 ml-0 sm:ml-2 text-base sm:text-xl md:text-2xl leading-relaxed max-w-[44ch] text-white animate-in">
-                    Are Using <span className="font-semibold">Maya On WhatsApp</span> for Hiring And Finding Freelancer
+                    Are Using{" "}
+                    <span className="font-semibold">Maya On WhatsApp</span> for
+                    Hiring And Finding Freelancer
                   </p>
 
                   <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-6 animate-in">
@@ -100,9 +131,8 @@ export default function Need1000Section() {
               </div>
             </div>
 
-          
-            <div className="w-full lg:w-1/2 flex justify-center lg:justify-end items-start animate-in">
-             <WhatsAppChatPhone/>
+            <div className="w-full lg:w-1/2 flex justify-center lg:justify-end items-start animate-in ">
+              <WhatsAppChatPhone />
             </div>
           </div>
         </div>

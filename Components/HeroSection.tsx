@@ -140,9 +140,13 @@ export default function HeroSection() {
         className="hidden lg:flex absolute inset-0 items-center justify-center pointer-events-none"
         aria-hidden="true"
       >
-        <div className="absolute rounded-full border-2 border-dashed border-[#25170D]/50 opacity-50 animate-pulse w-[220px] h-[220px] sm:w-[420px] sm:h-[420px] md:w-[700px] md:h-[700px] lg:w-[900px] lg:h-[900px] xl:w-[1200px] xl:h-[1200px]" />
-        <div className="absolute rounded-full border-2 border-dashed border-[#25170D]/50 opacity-40 animate-pulse w-[180px] h-[180px] sm:w-[360px] sm:h-[360px] md:w-[600px] md:h-[600px] lg:w-[750px] lg:h-[750px] xl:w-[1000px] xl:h-[1000px]" />
-        <div className="absolute rounded-full border-2 border-dashed border-[#25170D]/50 opacity-30 animate-pulse w-[110px] h-[110px] sm:w-60 sm:h-60 md:w-[420px] md:h-[420px] lg:w-[540px] lg:h-[540px] xl:w-[700px] xl:h-[700px]" />
+        <div className="absolute top-[-60%] rounded-full border-2 border-dashed border-[#25170D]/50 opacity-50 animate-pulse w-[220px] h-[220px] sm:w-[420px] sm:h-[420px] md:w-[700px] md:h-[700px] lg:w-[900px] lg:h-[900px] xl:w-[1900px] xl:h-[1900px]" />
+        <div className="absolute top-[-50%] rounded-full border-2 border-dashed border-[#25170D]/50 opacity-50 animate-pulse w-[220px] h-[220px] sm:w-[420px] sm:h-[420px] md:w-[700px] md:h-[700px] lg:w-[900px] lg:h-[900px] xl:w-[1600px] xl:h-[1600px]" />
+        <div className="absolute top-[-30%] rounded-full border-2 border-dashed border-[#25170D]/50 opacity-50 animate-pulse w-[220px] h-[220px] sm:w-[420px] sm:h-[420px] md:w-[700px] md:h-[700px] lg:w-[900px] lg:h-[900px] xl:w-[1300px] xl:h-[1300px]" />
+        <div className="absolute top-[-20%] rounded-full border-2 border-dashed border-[#25170D]/50 opacity-50 animate-pulse w-[220px] h-[220px] sm:w-[420px] sm:h-[420px] md:w-[700px] md:h-[700px] lg:w-[900px] lg:h-[900px] xl:w-[1100px] xl:h-[1100px]" />
+        <div className="absolute top-[-5%] rounded-full border-2 border-dashed border-[#25170D]/50 opacity-50 animate-pulse w-[220px] h-[220px] sm:w-[420px] sm:h-[420px] md:w-[700px] md:h-[700px] lg:w-[900px] lg:h-[900px] xl:w-[900px] xl:h-[900px]" />
+        <div className="absolute top-[20%] rounded-full border-2 border-dashed border-[#25170D]/50 opacity-40 animate-pulse w-[180px] h-[180px] sm:w-[360px] sm:h-[360px] md:w-[600px] md:h-[600px] lg:w-[750px] lg:h-[750px] xl:w-[600px] xl:h-[600px]" />
+        <div className="absolute top-[40%] rounded-full border-2 border-dashed border-[#25170D]/50 opacity-30 animate-pulse w-[110px] h-[110px] sm:w-60 sm:h-60 md:w-[420px] md:h-[420px] lg:w-[540px] lg:h-[540px] xl:w-[400px] xl:h-[400px]" />
       </div>
 
       <div

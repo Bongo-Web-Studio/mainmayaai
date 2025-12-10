@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
@@ -11,15 +10,13 @@ type Message = {
   time: string;
 };
 
-// Put these images in /public/images:
-// - whatsapp-wallpaper.png
-// - maya-avatar.png
-
 const LoadingBubble = React.forwardRef<HTMLDivElement, { side: Side }>(
   ({ side }, ref) => {
     return (
       <div
-        className={`typing-wrapper self-${side === "right" ? "end" : "start"} mt-1`}
+        className={`typing-wrapper self-${
+          side === "right" ? "end" : "start"
+        } mt-1`}
         aria-hidden="false"
       >
         <motion.div
@@ -87,7 +84,6 @@ export default function WhatsAppChatPhone() {
     },
   ];
 
-  // resolvers for waiting until each message's animation completes
   const resolversRef = useRef<Array<() => void>>([]);
   const cancelledRef = useRef(false);
 
@@ -100,38 +96,30 @@ export default function WhatsAppChatPhone() {
     const sleep = (ms: number) =>
       new Promise((res) => {
         const t = setTimeout(() => res(undefined), ms);
-        // cleanup handled by cancelledRef
       });
 
     (async () => {
       for (let i = 0; i < messages.length; i++) {
         if (cancelledRef.current) break;
 
-        // set typing side for this upcoming message
         setTypingSide(messages[i].side === "right" ? "right" : "left");
         setShowTyping(true);
 
-        // small timeout to allow render & typing bubble to be added
         await sleep(60);
         if (cancelledRef.current) break;
 
-        // <-- changed typing duration from 2000ms to 1000ms -->
         await sleep(1000);
         if (cancelledRef.current) break;
 
         setShowTyping(false);
 
-        // reveal the next message and wait until its animation completes
         await new Promise<void>((resolve) => {
-          // push resolver so message's onAnimationComplete can call it
           resolversRef.current[i] = resolve;
           setVisibleCount((v) => v + 1);
         });
 
-        // wait a tick for layout (animation will run)
         await sleep(40);
 
-        // slight pause between messages
         await sleep(120);
       }
 
@@ -140,12 +128,11 @@ export default function WhatsAppChatPhone() {
 
     return () => {
       cancelledRef.current = true;
-      // clear resolvers to avoid memory leaks
+
       resolversRef.current = [];
     };
-  }, []); // run once
+  }, []);
 
-  // message animation variants
   const msgVariants = {
     hidden: (side: Side) => ({
       opacity: 0,
@@ -158,9 +145,7 @@ export default function WhatsAppChatPhone() {
 
   return (
     <div className=" flex items-center justify-center p-1 bg-white rounded-3xl">
-      {/* Phone frame */}
       <div className="w-[380px] h-[650px] rounded-3xl border-2 border-black/60 overflow-hidden shadow-2xl bg-[#0b0b0b]">
-        {/* Header */}
         <header className="flex items-center gap-3 px-4 py-3 bg-[#0B1014]">
           <img
             src="/images/maya.png"
@@ -173,14 +158,11 @@ export default function WhatsAppChatPhone() {
           </div>
         </header>
 
-        {/* Chat area with wallpaper background */}
         <div className="relative h-full bg-[url('https://content.puch.ai/features/wtsp-bg.png')] bg-center bg-cover">
           <div className="absolute inset-0 flex flex-col">
-            {/* messages container */}
             <div
               ref={wrapRef}
               className="flex-1 overflow-auto p-4 flex flex-col gap-3"
-              // Add some bottom padding so final message isn't obscured by input
               style={{ paddingBottom: 12 }}
             >
               {messages.map((m, idx) => {
@@ -196,13 +178,12 @@ export default function WhatsAppChatPhone() {
                     animate={isVisible ? "visible" : "hidden"}
                     transition={{ duration: 0.48, ease: [0.22, 1, 0.36, 1] }}
                     onAnimationComplete={() => {
-                      // if this message just became visible, resolve the waiting promise
                       if (
                         isVisible &&
                         typeof resolversRef.current[idx] === "function"
                       ) {
                         resolversRef.current[idx]();
-                        // remove resolver after calling
+
                         resolversRef.current[idx] = undefined as any;
                       }
                     }}
@@ -223,18 +204,14 @@ export default function WhatsAppChatPhone() {
                 );
               })}
 
-              {/* typing indicator - only show when typingSide is 'left' */}
               {showTyping && typingSide === "left" && (
                 <LoadingBubble ref={typingRef as any} side={typingSide} />
               )}
             </div>
-
-            {/* input area (non-functional demo) */}
           </div>
         </div>
       </div>
 
-      {/* small styles injected to keep component self-contained for demo */} 
       <style jsx>{`
         .self-end {
           align-self: flex-end;
@@ -243,7 +220,6 @@ export default function WhatsAppChatPhone() {
           align-self: flex-start;
         }
 
-        /* Loading bubble styling */
         .typing-wrapper {
           margin-top: 6px;
         }
@@ -252,7 +228,6 @@ export default function WhatsAppChatPhone() {
           will-change: transform, opacity;
         }
 
-        /* bubble background and inner container */
         .typing-inner {
           background: rgba(44, 44, 44, 0.98);
           color: #ffffff;
@@ -265,7 +240,6 @@ export default function WhatsAppChatPhone() {
           justify-content: center;
         }
 
-        /* dots baseline - align to bottom so they look like they pop up */
         .dots {
           height: 10px;
           display: flex;
@@ -286,7 +260,6 @@ export default function WhatsAppChatPhone() {
           animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
-        /* keyframes — dots move upwards then settle */
         @keyframes dotUp {
           0% {
             transform: translateY(0);
@@ -306,7 +279,6 @@ export default function WhatsAppChatPhone() {
           }
         }
 
-        /* small responsive tweaks */
         @media (max-width: 420px) {
           .typing-inner {
             padding: 6px 8px;

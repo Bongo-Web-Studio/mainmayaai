@@ -42,7 +42,7 @@ export default function Marqueue() {
 
   return (
     <div className="w-full h-full flex relative">
-      {/* LEFT MARQUEE */}
+   
       <div className="left-parent w-[50%] overflow-hidden flex justify-center items-center">
         <div
           className="marquee-track left-track flex whitespace-nowrap items-center gap-8 will-change-transform text-[#25170D]"
@@ -126,7 +126,7 @@ export default function Marqueue() {
       </div>
 
       <div className="absolute top-0 left-[35%] lg:left-[45%] w-[6cm] h-full  flex items-center">
-        <VoiceButton/>
+        <VoiceButton />
       </div>
 
       <style>{`
@@ -147,10 +147,11 @@ export default function Marqueue() {
         }
 
    
-        .right-track {
-          animation: move-right var(--duration, 12s) linear infinite;
-          min-width: 200%;
-        }
+       .right-track {
+  animation: move-right var(--duration, 12s) linear infinite;
+  animation-direction: reverse;   /* <- ADD THIS */
+  min-width: calc(var(--groups) * 100%);
+}
 
         .left-parent:hover .left-track,
         .right-parent:hover .right-track {
