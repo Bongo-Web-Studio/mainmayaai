@@ -135,7 +135,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative min-h-[40vh] sm:min-h-[75vh] lg:min-h-[80vh] flex items-start justify-center overflow-hidden ">
+    <section className="relative min-h-[45vh] sm:min-h-[75vh] lg:min-h-[80vh] flex items-start justify-center overflow-hidden ">
       <div
         className="hidden lg:flex absolute inset-0 items-center justify-center pointer-events-none"
         aria-hidden="true"
