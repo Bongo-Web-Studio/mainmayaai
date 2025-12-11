@@ -79,7 +79,7 @@ export default function CTA() {
           <span className="block md:inline"> On WhatsApp</span>
         </h2>
 
-        <div className="cta-animate mt-8 w-full flex justify-center items-center">
+        <div className="cta-animate  w-full flex justify-center items-center">
           <button
             className="py-2 italic px-3 sm:px-5 gap-2 hover:scale-[1.03] flex justify-center items-center bg-white text-black text-lg sm:text-xl rounded-full  border border-b-4 border-r-2 border-black  transition-all duration-300"
             aria-label="Try now"
@@ -95,7 +95,7 @@ export default function CTA() {
       <img
         src="/Images/pp1.png"
         alt="Maya background"
-        className="cta-bg w-full h-auto md:h-full object-cover object-center mt-10 md:mt-0 relative"
+        className="cta-bg w-full h-auto md:h-full object-cover object-center  relative"
         aria-hidden
         style={{ zIndex: 0 }}
       />
