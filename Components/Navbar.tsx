@@ -48,6 +48,8 @@ const NavLinks = ({ isMobile = false }: { isMobile?: boolean }) => (
       <span className="text-[#25170D]">Need A Freelancer</span>
       <IoMdHelp className="text-[#F54A00]" aria-hidden="true" />
     </button>
+<Link href="/hr"  >
+
 
     <button
       type="button"
@@ -57,6 +59,7 @@ const NavLinks = ({ isMobile = false }: { isMobile?: boolean }) => (
       <span className="text-[#25170D]">Are You Hiring</span>
       <IoMdHelp className="text-[#F54A00]" aria-hidden="true" />
     </button>
+</Link>
   </div>
 );
 
