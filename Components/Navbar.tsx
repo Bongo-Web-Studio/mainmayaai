@@ -39,7 +39,7 @@ const NavLinks = ({ isMobile = false }: { isMobile?: boolean }) => (
     className={`flex ${
       isMobile ? "flex-col space-y-4" : "items-center space-x-8"
     } text-md font-medium`}
-  >
+  ><Link href="/free"  >
     <button
       type="button"
       className="flex items-center gap-1 cursor-pointer"
@@ -48,6 +48,7 @@ const NavLinks = ({ isMobile = false }: { isMobile?: boolean }) => (
       <span className="text-[#25170D]">Need A Freelancer</span>
       <IoMdHelp className="text-[#F54A00]" aria-hidden="true" />
     </button>
+    </Link>
 <Link href="/hr"  >
 
 
