@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -14,6 +14,7 @@ if (typeof window !== "undefined") {
 
 export default function CTA() {
   const wrapperRef = useRef<HTMLDivElement | null>(null);
+  const [message, setMessage] = useState<string>("hey maya");
 
   useEffect(() => {
     const el = wrapperRef.current;
@@ -61,8 +62,24 @@ export default function CTA() {
     return () => ctx.revert();
   }, []);
 
+  const handleSend = () => {
+    // Use country code +91 for India. If this should be different, replace the prefix.
+    const rawNumber = "9205812098";
+    const phone = `91${rawNumber}`; // -> "919205812098"
+    const text = (message || "hey maya").trim() || "hey maya";
+    const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+
+    // Open WhatsApp chat in new tab/window
+    try {
+      window.open(url, "_blank");
+    } catch (err) {
+      // fallback
+      window.location.href = url;
+    }
+  };
+
   return (
-    <section  className="relative w-full overflow-hidden">
+    <section className="relative w-full overflow-hidden">
       <div
         style={{
           zIndex: 5,
@@ -71,19 +88,20 @@ export default function CTA() {
           mixBlendMode: "multiply",
         }}
         className="relative z-10 w-full mx-auto text-center pt-20 px-4"
+        ref={wrapperRef}
       >
         <h2
           style={{ fontFamily: "DavidLibre" }}
-          className="cta-animate text-4xl lg:text-6xl text-[#25170D] leading-tight font-semibold"
+          className="cta-animate text-4xl lg:text-6xl text-[#25170D] leading-tight font-semibold lg:w-[20cm] mx-auto"
         >
           Just tell maya what you need
-          <br />
-          <span className="block md:inline  text-green-500"> On WhatsApp</span>
+         
+          <span className="text-green-500"> On WhatsApp</span>
         </h2>
 
         {/* Input/CTA Container */}
         <div className="cta-animate mt-10 flex justify-center items-center p-2">
-          <div className="relative flex items-center w-full max-w-lg h-14 bg-white rounded-full  border border-b-4 hover:border-b border-black">
+          <div className="relative flex items-center w-full max-w-lg h-14 bg-white rounded-full border border-b-4 hover:border-b border-black">
             {/* Left Icons: Smiley */}
             <div className="px-4 text-gray-500 text-xl flex items-center">
               <BsEmojiSmile />
@@ -92,26 +110,27 @@ export default function CTA() {
             {/* Input Field */}
             <input
               type="text"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
               placeholder="Tell Maya what you are looking for..."
               className="flex-grow h-full bg-transparent text-gray-700 placeholder-gray-500 focus:outline-none text-base"
-              aria-label="Search or message input"
-              readOnly // Assuming this is just a visual representation
+              aria-label="Message to Maya"
             />
 
             {/* Right Icons: Paper Clip */}
             <div className="px-4 text-gray-500 text-xl flex items-center">
               <SlPaperClip />
             </div>
-
-            {/* Send Button (Green Circle) - Note: Positioned outside the main input bar in the image */}
           </div>
 
           {/* Send Button */}
           <button
-            className="ml-2 w-14 h-14 rounded-full flex justify-center items-center shadow-lg transform active:scale-95 transition-transform duration-150 bg-[#1CAB5F] border border-b-4  border-r-2 hover:border-b border-black"
-            aria-label="Send message"
+            onClick={handleSend}
+            className="ml-2 w-14 h-14 rounded-full flex justify-center items-center shadow-lg transform active:scale-95 transition-transform duration-150 bg-[#1CAB5F] border border-b-4 border-r-2 hover:border-b border-black"
+            aria-label="Send message to WhatsApp"
+            title="Send via WhatsApp"
           >
-            <IoSend className="text-white text-2xl " />
+            <IoSend className="text-white text-2xl" />
           </button>
         </div>
       </div>
@@ -119,7 +138,7 @@ export default function CTA() {
       <img
         src="/Images/pp1.png"
         alt="Maya background"
-        className="cta-bg w-full h-auto md:h-full object-cover object-center  relative"
+        className="cta-bg w-full h-auto md:h-full object-cover object-center relative"
         aria-hidden
         style={{ zIndex: 0 }}
       />

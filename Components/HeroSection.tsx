@@ -12,7 +12,20 @@ export default function HeroSection() {
   const headingRef = useRef<HTMLHeadingElement | null>(null);
   const marqRef = useRef<HTMLDivElement | null>(null);
   const bgCirclesRef = useRef<HTMLDivElement | null>(null);
-  const tryNowRef = useRef<HTMLButtonElement | null>(null); // <-- new ref
+  const tryNowRef = useRef<HTMLButtonElement | null>(null);
+
+  // --- WhatsApp helper ---
+  const openWhatsApp = () => {
+    // use international format without '+', e.g. 91 for India
+    const phone = "919205812098"; // +91 92058 12098 -> remove spaces
+    const message = "hey maya";
+    const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+
+    if (typeof window !== "undefined") {
+      // opens in new tab (desktop -> WhatsApp Web, mobile -> WhatsApp app)
+      window.open(url, "_blank", "noopener,noreferrer");
+    }
+  };
 
   function splitTextToWords(root: Node) {
     const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null);
@@ -155,10 +168,8 @@ export default function HeroSection() {
       // --- Try Now button entrance animation ---
       const tryNowBtn = tryNowRef.current;
       if (tryNowBtn) {
-        // start from off-bottom, scaled to 0, invisible
         gsap.set(tryNowBtn, { y: 30, scale: 0, opacity: 0, transformOrigin: "50% 50%" });
 
-        // animate into view (blend into the existing timeline)
         tl.to(
           tryNowBtn,
           {
@@ -168,7 +179,7 @@ export default function HeroSection() {
             duration: 0.45,
             ease: "back.out(1.4)",
           },
-          "-=0.25" // overlap slightly with previous animations
+          "-=0.25"
         );
       }
     }, containerRef);
@@ -221,7 +232,9 @@ export default function HeroSection() {
         </h1>
 
         <button
-          ref={tryNowRef} // <-- attach ref here
+          ref={tryNowRef}
+          onClick={openWhatsApp}
+          aria-label="Open WhatsApp chat"
           className=" lg:hidden flex justify-center items-center bg-orange-600 px-6 py-2 text-white rounded-full border border-black border-b-4"
         >
           Try Now <GoArrowRight />
