@@ -1,345 +1,327 @@
-"use client";
 import React, { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { FaSignal, FaWifi, FaPhoneAlt } from "react-icons/fa";
+import { MdVerified } from "react-icons/md";
+import { IoBatteryFull } from "react-icons/io5";
 
-type Side = "left" | "right";
-type Message = {
-  id: number;
-  side: Side;
-  text: string;
-  time?: string;
-};
-
-type Conversation = {
-  id: string;
+type Candidate = {
   name: string;
-
-  messages: Message[];
+  ctc: string;
+  phone: string;
 };
 
-const LoadingBubble = React.forwardRef<HTMLDivElement, { side: Side }>(
-  ({ side }, ref) => {
-    return (
-      <div
-        className={`typing-wrapper self-${
-          side === "right" ? "end" : "start"
-        } mt-1`}
-        aria-hidden="false"
-      >
-        <motion.div
-          ref={ref}
-          initial={{
-            opacity: 0,
-            y: 8,
-            x: side === "right" ? 8 : -8,
-            scale: 0.98,
-          }}
-          animate={{ opacity: 1, y: 0, x: 0, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.98 }}
-          transition={{ duration: 0.28 }}
-          className={`typing-bubble inline-flex items-center p-1 rounded-lg`}
-          role="status"
-          aria-live="polite"
-        >
-          <div className="typing-inner">
-            <div className="dots flex gap-2 items-end">
-              <span className="dot" style={{ animationDelay: "0s" }} />
-              <span className="dot" style={{ animationDelay: "0.12s" }} />
-              <span className="dot" style={{ animationDelay: "0.24s" }} />
-            </div>
-          </div>
-        </motion.div>
-      </div>
-    );
-  }
-);
-LoadingBubble.displayName = "LoadingBubble";
+type Msg = {
+  type: "outgoing" | "incoming";
+  text?: string;
+  rich?: Candidate[];
+};
 
-export default function WhatsAppChatPhone() {
-  const wrapRef = useRef<HTMLDivElement | null>(null);
-  const typingRef = useRef<HTMLDivElement | null>(null);
-  const [showTyping, setShowTyping] = useState(false);
-  const [typingSide, setTypingSide] = useState<Side>("left");
-  const [visibleCount, setVisibleCount] = useState(0);
-  const [currentConvIdx, setCurrentConvIdx] = useState(0);
+type Scenario = {
+  from: string;
+  messages: Msg[];
+};
 
-  const conversations: Conversation[] = [
+type DisplayMsg = {
+  id: string;
+  from: string;
+  type: "outgoing" | "incoming";
+  text?: string;
+  rich?: Candidate[];
+};
+
+const Phone: React.FC = () => {
+  const scenarios: Scenario[] = [
     {
-      id: "conv-1",
-      name: "Ankur",
-
+      from: "Raj",
       messages: [
-        { id: 1, side: "right", text: "Hi Maya" },
+        { type: "outgoing", text: "hey Maya 👋" },
         {
-          id: 2,
-          side: "right",
-          text: "I'm Ankur - Founder of CirclePe. Need to hire a back-end developer ASAP",
+          type: "outgoing",
+          text: "We urgently need a Senior Backend (Node/Express). 15-20 LPA — can interview this week?",
         },
         {
-          id: 3,
-          side: "left",
-          text: "Got it — I can help. I know a few folks.",
+          type: "incoming",
+          text: "On it — lemme pull a couple of profiles who fit the bill.",
+        },
+        {
+          type: "incoming",
+          rich: [
+            {
+              name: "Vishnu — Backend (2+ yrs)",
+              ctc: "CTC: 16 LPA",
+              phone: "+91-89208 39800",
+            },
+            {
+              name: "Neeraj — Backend (3+ yrs)",
+              ctc: "CTC: 18 LPA",
+              phone: "+91-98765 43291",
+            },
+          ],
         },
       ],
     },
     {
-      id: "conv-2",
-      name: "Priya",
-
+      from: "Kavya",
       messages: [
+        { type: "outgoing", text: "hey Maya — quick q:" },
         {
-          id: 1,
-          side: "right",
-          text: "Hey Maya, I just applied — here is my resume.",
+          type: "outgoing",
+          text: "Need a Frontend dev (React + Typescript). Mid-senior. Remote ok. Budget 10-14L.",
         },
-        { id: 2, side: "right", text: "Resume: Priya_SDE.pdf" },
         {
-          id: 3,
-          side: "left",
-          text: "Thanks Priya — I received your resume. There's a founder looking for SDEs right now.",
+          type: "incoming",
+          text: "Gotcha — I’ll check folks who love clean UI and performance.",
         },
-        { id: 4, side: "left", text: "I'll share your profile." },
-      ],
-    },
-    {
-      id: "conv-3",
-      name: "Rohan",
-
-      messages: [
-        { id: 1, side: "right", text: "Hi — Is there any remote role?" },
-        { id: 2, side: "right", text: "I have 3 years Node.js experience." },
         {
-          id: 3,
-          side: "left",
-          text: "Nice — remote roles exist. There's a backend opening in Gurgaon, 15-20 LPA.",
+          type: "incoming",
+          rich: [
+            {
+              name: "Ravi — Frontend (2 yrs)",
+              ctc: "CTC: 12 LPA",
+              phone: "+91-90000 12345",
+            },
+            {
+              name: "Shreya — Frontend (4 yrs)",
+              ctc: "CTC: 14 LPA",
+              phone: "+91-90001 54321",
+            },
+          ],
         },
       ],
     },
     {
-      id: "conv-4",
-      name: "Sana",
-
+      from: "Aman",
       messages: [
         {
-          id: 1,
-          side: "right",
-          text: "Maya, can you shortlist people for ML roles?",
+          type: "outgoing",
+          text: "Mayayy — need a UX/UI designer who can do end-to-end. Remote ok.",
         },
         {
-          id: 2,
-          side: "left",
-          text: "Yes — share the JD and I'll scan my network.",
+          type: "outgoing",
+          text: "Prefer someone with Figma + some motion design. 8-12L",
+        },
+        {
+          type: "incoming",
+          text: "Nice brief — I know a couple designers who do product-focused work.",
+        },
+        {
+          type: "incoming",
+          rich: [
+            {
+              name: "Pooja — Designer (3 yrs)",
+              ctc: "CTC: 9 LPA",
+              phone: "+91-91000 22233",
+            },
+            {
+              name: "Sameer — Product Designer (5 yrs)",
+              ctc: "CTC: 12 LPA",
+              phone: "+91-91001 44455",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      from: "Priya",
+      messages: [
+        {
+          type: "outgoing",
+          text: "hi Maya — any DevOps folks? Need k8s + terraform experience.",
+        },
+        {
+          type: "outgoing",
+          text: "Production infra, must be comfortable with CI/CD. 18L bracket.",
+        },
+        {
+          type: "incoming",
+          text: "I’ll surface folks who run infra at scale — give me a sec.",
+        },
+        {
+          type: "incoming",
+          rich: [
+            {
+              name: "Ankit — DevOps (4 yrs)",
+              ctc: "CTC: 17 LPA",
+              phone: "+91-92000 33344",
+            },
+            {
+              name: "Nidhi — SRE/DevOps (5 yrs)",
+              ctc: "CTC: 19 LPA",
+              phone: "+91-92001 55566",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      from: "Sameer",
+      messages: [
+        {
+          type: "outgoing",
+          text: "hey Maya — looking for a growth/marketing person (performance).",
+        },
+        {
+          type: "outgoing",
+          text: "Budget 10L, must know paid acquisition + analytics.",
+        },
+        {
+          type: "incoming",
+          text: "Cool — I’ll share marketers who have scaled paid funnels before.",
+        },
+        {
+          type: "incoming",
+          rich: [
+            {
+              name: "Isha — Growth (3 yrs)",
+              ctc: "CTC: 10 LPA",
+              phone: "+91-93000 66677",
+            },
+            {
+              name: "Rohit — Performance (4 yrs)",
+              ctc: "CTC: 11 LPA",
+              phone: "+91-93001 88899",
+            },
+          ],
         },
       ],
     },
   ];
 
-  const resolversRef = useRef<Array<() => void>>([]);
-  const cancelledRef = useRef(false);
+  const [displayed, setDisplayed] = useState<DisplayMsg[]>([]);
+  const listRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    cancelledRef.current = false;
-    const conv = conversations[currentConvIdx];
-    setVisibleCount(0);
+    let cancelled = false;
+    let timeoutId: number | null = null;
 
-    const sleep = (ms: number) =>
-      new Promise((res) => {
-        const t = setTimeout(() => res(undefined), ms);
-      });
+    const runScenario = (scenarioIndex = 0, messageIndex = 0) => {
+      if (cancelled) return;
+      const scenario = scenarios[scenarioIndex];
+      if (!scenario) return;
 
-    (async () => {
-      for (let i = 0; i < conv.messages.length; i++) {
-        if (cancelledRef.current) break;
+      if (messageIndex < scenario.messages.length) {
+        const msg = scenario.messages[messageIndex];
+        const instance: DisplayMsg = {
+          id: `${scenarioIndex}-${messageIndex}-${Date.now()}`,
+          from: scenario.from,
+          type: msg.type,
+          text: msg.text,
+          rich: msg.rich,
+        };
 
-        setTypingSide(conv.messages[i].side === "right" ? "right" : "left");
-        setShowTyping(true);
+        setDisplayed((prev) => [...prev, instance]);
 
-        const len = conv.messages[i].text?.length || 20;
-        await sleep(80 + Math.min(1200, len * 20));
-        if (cancelledRef.current) break;
-
-        setShowTyping(false);
-
-        await new Promise<void>((resolve) => {
-          resolversRef.current[i] = resolve;
-          setVisibleCount((v) => v + 1);
-        });
-
-        await sleep(160);
+        timeoutId = window.setTimeout(
+          () => runScenario(scenarioIndex, messageIndex + 1),
+          1000
+        );
+        return;
       }
 
-      setShowTyping(false);
+      // scenario finished
+      timeoutId = window.setTimeout(() => {
+        if (cancelled) return;
+        const nextScenario = (scenarioIndex + 1) % scenarios.length;
+        setDisplayed([]);
+        timeoutId = window.setTimeout(() => runScenario(nextScenario, 0), 600);
+      }, 1000);
+    };
 
-      if (!cancelledRef.current) {
-        await sleep(1200);
-        setCurrentConvIdx((s) => (s + 1) % conversations.length);
-      }
-    })();
+    timeoutId = window.setTimeout(() => runScenario(0, 0), 600);
 
     return () => {
-      cancelledRef.current = true;
-      resolversRef.current = [];
+      cancelled = true;
+      if (timeoutId !== null) window.clearTimeout(timeoutId);
     };
-  }, [currentConvIdx]);
-
-  const msgVariants = {
-    hidden: (side: Side) => ({
-      opacity: 0,
-      y: 18,
-      scale: 0.985,
-      x: side === "right" ? 8 : -8,
-    }),
-    visible: { opacity: 1, y: 0, x: 0, scale: 1 },
-  };
-
-  const conv = conversations[currentConvIdx];
+  }, []); // run once on mount
 
   return (
-    <div className=" flex items-center justify-center p-1 bg-white rounded-3xl">
-      <div className="w-[380px] h-[650px] rounded-3xl border-2 border-black/60 overflow-hidden shadow-2xl bg-[#0b0b0b]">
-        <header className="flex items-center gap-3 px-4 py-3 bg-[#0B1014]">
-          <img
-            src="/images/maya.png"
-            alt="maya"
-            className="w-9 h-9 rounded-full object-cover object-top"
-          />
-          <div className="flex-1 text-white">
-            <div className="font-medium">Maya</div>
-            <div className="text-[11px] text-white/70">online</div>
-          </div>
-        </header>
+    <div className="rounded-4xl flex items-center justify-center">
+      <div className="relative mx-auto border-neutral-800 border-6 bg-white rounded-3xl h-[700px] w-[350px] shadow-xl">
+        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-[100px] h-[30px] bg-neutral-800 rounded-b-2xl z-20" />
 
-        <div className="relative h-full bg-[url('https://content.puch.ai/features/wtsp-bg.png')] bg-center bg-cover">
-          <div className="absolute inset-0 flex flex-col">
-            <div
-              ref={wrapRef}
-              className="flex-1 overflow-auto p-4 flex flex-col gap-3"
-              style={{ paddingBottom: 12 }}
-            >
-              {conv.messages.map((m, idx) => {
-                const isVisible = idx < visibleCount;
-                return (
-                  <motion.div
-                    key={`${conv.id}-${m.id}`}
-                    data-side={m.side}
-                    data-id={m.id}
-                    custom={m.side}
-                    variants={msgVariants}
-                    initial="hidden"
-                    animate={isVisible ? "visible" : "hidden"}
-                    transition={{ duration: 0.48, ease: [0.22, 1, 0.36, 1] }}
-                    onAnimationComplete={() => {
-                      if (
-                        isVisible &&
-                        typeof resolversRef.current[idx] === "function"
-                      ) {
-                        resolversRef.current[idx]();
-                        resolversRef.current[idx] = undefined as any;
-                      }
-                    }}
-                    className={`message max-w-[78%] wrap-break-word whitespace-pre-line p-3 rounded-xl text-sm leading-snug shadow-sm self-${
-                      m.side === "right" ? "end" : "start"
-                    }`}
-                  >
-                    <div
-                      className={`${
-                        m.side === "right"
-                          ? "bg-[#154D38] text-white"
-                          : "bg-[#1F272A] text-white/95"
-                      } px-2 py-2 rounded-lg`}
-                    >
-                      <div>{m.text}</div>
-                    </div>
-                  </motion.div>
-                );
-              })}
-
-              {showTyping && typingSide === "left" && (
-                <LoadingBubble ref={typingRef as any} side={typingSide} />
-              )}
+        <div className="h-full w-full bg-[#E4DCD3] rounded-3xl overflow-hidden flex flex-col relative">
+          <div className="h-8 bg-white flex items-center justify-between px-6 z-10 text-black">
+            <span className="text-sm font-semibold ml-2">9:41</span>
+            <div className="flex gap-1.5 items-center mr-1">
+              <FaSignal className="text-xs" />
+              <FaWifi className="text-xs" />
+              <IoBatteryFull className="text-lg" />
             </div>
+          </div>
+
+          {/* header*/}
+          <div className="bg-white px-4 py-2 flex items-center justify-between shadow-sm z-10 border-b border-gray-100">
+            <div className="flex items-center gap-3">
+              <div className="relative">
+                <img
+                  src="https://img.freepik.com/free-psd/3d-illustration-human-avatar-profile_23-2150671142.jpg"
+                  alt="Maya"
+                  className="w-10 h-10 rounded-full object-cover border border-gray-200"
+                />
+              </div>
+              <div className="flex flex-col">
+                <div className="flex items-center gap-1">
+                  <span className="font-bold text-gray-800 text-lg">Maya</span>
+                  <MdVerified className="text-blue-500 text-base" />
+                </div>
+              </div>
+            </div>
+            <button aria-hidden />
+          </div>
+
+          {/* messages area */}
+          <div
+            ref={listRef}
+            className="flex-1 overflow-y-auto p-4 flex flex-col gap-4 relative z-10 pb-10"
+          >
+            {displayed.map((m) => (
+              <div
+                key={m.id}
+                className={
+                  m.type === "outgoing"
+                    ? "self-end max-w-[80%]"
+                    : "self-start max-w-[85%]"
+                }
+              >
+                {/* text bubble */}
+                {m.text && (
+                  <div
+                    className={
+                      m.type === "outgoing"
+                        ? "bg-[#C8F6A8] p-3 rounded-2xl rounded-tr-none shadow-sm text-gray-800 text-sm font-medium"
+                        : "bg-white p-3 rounded-2xl rounded-tl-none shadow-sm text-gray-800 text-sm font-medium"
+                    }
+                  >
+                    {m.text}
+                  </div>
+                )}
+
+                {/* rich payload candidate cards */}
+                {m.rich && (
+                  <div className="bg-white p-4 rounded-2xl rounded-tl-none shadow-sm text-gray-800 text-sm mt-2">
+                    {m.rich.map((c, i) => (
+                      <div key={i} className="mb-3">
+                        <p className="font-bold text-base text-gray-800">
+                          {i + 1}. {c.name}
+                        </p>
+                        <p className="font-medium text-gray-700 mt-0.5">
+                          {c.ctc}
+                        </p>
+                        <div className="flex items-center gap-2 mt-1 text-blue-500 font-medium cursor-pointer hover:underline">
+                          <FaPhoneAlt className="text-xs transform scale-x-[-1]" />
+                          <span>{c.phone}</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        .self-end {
-          align-self: flex-end;
-        }
-        .self-start {
-          align-self: flex-start;
-        }
-
-        .typing-wrapper {
-          margin-top: 6px;
-        }
-
-        .typing-bubble {
-          will-change: transform, opacity;
-        }
-
-        .typing-inner {
-          background: rgba(44, 44, 44, 0.98);
-          color: #ffffff;
-          padding: 8px 10px;
-          border-radius: 14px;
-          display: inline-flex;
-          align-items: center;
-          box-shadow: 0 4px 10px rgba(2, 6, 23, 0.35);
-          min-width: 42px;
-          justify-content: center;
-        }
-
-        .dots {
-          height: 10px;
-          display: flex;
-          align-items: flex-end;
-        }
-
-        .dots .dot {
-          background: rgba(255, 255, 255, 0.95);
-          display: inline-block;
-          width: 6px;
-          height: 6px;
-          border-radius: 999px;
-          transform: translateY(0);
-          opacity: 0.9;
-          animation-name: dotUp;
-          animation-duration: 0.72s;
-          animation-iteration-count: infinite;
-          animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
-
-        @keyframes dotUp {
-          0% {
-            transform: translateY(0);
-            opacity: 0.7;
-          }
-          40% {
-            transform: translateY(-6px);
-            opacity: 1;
-          }
-          80% {
-            transform: translateY(0);
-            opacity: 0.85;
-          }
-          100% {
-            transform: translateY(0);
-            opacity: 0.7;
-          }
-        }
-
-        @media (max-width: 420px) {
-          .typing-inner {
-            padding: 6px 8px;
-            min-width: 36px;
-          }
-          .dots .dot {
-            width: 5px;
-            height: 5px;
-          }
-        }
-      `}</style>
     </div>
   );
-}
+};
+
+export default Phone;
