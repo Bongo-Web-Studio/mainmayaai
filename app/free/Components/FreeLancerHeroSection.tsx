@@ -45,11 +45,11 @@ const FreeLancerHeroSection: React.FC = () => {
   return (
     <section
       ref={rootRef}
-      className="h-[55vh] lg:h-[69vh] flex flex-col items-center justify-center relative overflow-hidden font-sans selection:bg-orange-300 px-4 md:px-8"
+      className="h-[60vh] lg:h-[69vh] flex flex-col items-center justify-center relative overflow-hidden font-sans selection:bg-orange-300 px-4 md:px-8"
       aria-label="Maya hiring hero"
     >
       {/* Card container */}
-      <div className="relative z-10 w-full max-w-6xl">
+      <div className="relative z-10 w-full max-w-7xl">
         <div
           ref={cardRef}
           className="bg-[#FFEFE3] border-2 border-orange-600  rounded-2xl px-6 py-12 md:py-16 text-center relative "

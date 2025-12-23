@@ -194,7 +194,7 @@ export default function HeroSection() {
     >
       <div
         ref={bgCirclesRef}
-        className="flex absolute inset-0 items-center justify-center pointer-events-none"
+        className="hidden lg:flex absolute inset-0 items-center justify-center pointer-events-none"
         aria-hidden="true"
       >
         <div className="hero-circle absolute lg:top-[-23%] rounded-full border-2 border-dashed border-[#25170D]/50 opacity-50 animate-pulse w-[600px] h-[600px] lg:w-[1300px] lg:h-[1300px]" />
@@ -206,11 +206,11 @@ export default function HeroSection() {
         style={{ fontFamily: "DavidLibre" }}
         className="relative z-10 w-full max-w-4xl mx-auto text-center pt-24 sm:pt-28 md:pt-32 lg:pt-32 flex justify-center items-center flex-col gap-6 px-6 lg:px-0"
       >
-        <style>{`.word{display:inline-block;will-change:transform,opacity,filter;backface-visibility:hidden;text-rendering:geometricPrecision}.space{display:inline-block;width:.45rem}`}</style>
+        
 
         <h1
           ref={headingRef}
-          className="text-2xl sm:text-3xl md:text-5xl w-[7cm] lg:w-2xl mx-auto  "
+          className="text-3xl md:text-5xl w-[8cm] bg-amber-600 lg:w-2xl  "
         >
           <span>
             <Highlighter action="highlight" color="#FFE5C0">
@@ -220,12 +220,12 @@ export default function HeroSection() {
           <span className="">pitched to</span>{" "}
           <span className="text-orange-600">1000's</span> <span>of</span>
 
-          <span className="">
-            Founders, HRs <br className="block lg:hidden  " /> &  Paying Clients
-          </span>
+        
+           {" "} Founders, HR &  Paying Clients
+        
           <span className="flex justify-center items-center gap-2 w-full text-[#25170D]">
-            <span>on</span>
-            <span className="flex items-center font-medium text-green-600 text-xl lg:text-[42px] whatsapp-label">
+            on
+            <span className="flex items-center font-medium text-green-600  whatsapp-label">
               WhatsApp <FaWhatsapp className="lg:size-9  " />
             </span>
           </span>
