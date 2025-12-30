@@ -58,14 +58,14 @@ export default function HowThisWorks({}: {}) {
   return (
     <section
       id="how-it-works"
-      className="w-full flex justify-center lg:py-16 px-6 "
+      className="w-full flex justify-center py-16 px-6 "
       aria-label="How Maya Works"
     >
       <div className="w-full max-w-4xl text-center" ref={containerRef}>
         <h2
           ref={headingRef}
           style={{ fontFamily: "DavidLibre" }}
-          className="text-3xl md:text-6xl font-semibold text-[#231915]"
+          className="text-3xl md:text-6xl font-semibold text-black ml-5"
         >
           <Highlighter action="underline" color="#FF6A2E">
             How Maya Works <span className="text-[#FF6A2E]">?</span>
@@ -78,14 +78,14 @@ export default function HowThisWorks({}: {}) {
               className=" justify-start items-start rounded-lg "
               ref={firstCardRef}
             >
-              <h3 className="text-2xl lg:text-4xl text-center font-semibold text-[#151515]  ">
+              <h3 className="text-2xl lg:text-4xl text-center font-semibold text-black ">
                 <span className="text-[#F54A00] italic"> Too many</span> CV’s,{" "}
                 <br />
                 from different platforms ?
               </h3>
 
               <img
-                className="w-full h-[8cm] object-contain  lg:ml-10 lg:mt-10"
+                className="w-full h-[8cm] object-contain ml-2 lg:ml-10 lg:mt-10"
                 src="/Images/Group 1171276869.png"
                 alt="cv pile"
               />
@@ -110,18 +110,20 @@ export default function HowThisWorks({}: {}) {
                 className="flex justify-start items-start  rounded-lg  relative"
                 ref={secondCardRef}
               >
-                <img
-                  className="w-[4cm] lg:w-[9cm] h-[4cm] lg:h-[6cm] object-contain border border-b-4 border-r-4 border-black bg-[#FFEFE3] rounded-lg"
+               <div  className="border border-b-4 border-r-4 border-black bg-[#FFEFE3] rounded-lg px-5  ">
+                 <img
+                  className="w-[3cm] lg:w-[5cm] h-[3cm] lg:h-[5cm] object-contain "
                   src="/Images/maya2.png"
                   alt="maya"
                 />
+               </div>
                 <div className=" pl-5">
-                  <h3 className="text-2xl lg:text-4xl font-medium text-[#151515] text-left mt-5">
+                  <h3 className="text-2xl lg:text-4xl font-medium text-black text-left  lg:mt-5 ">
                     Just hand <br />
                     them <span className="text-[#F54A00] italic">Maya</span>
                   </h3>
 
-                  <p className=" text-md lg:text-2xl text-[#6b6b6b]  text-left mt-5">
+                  <p className=" text-sm lg:text-xl text-neutral-600  text-left mt-3 lg:mt-5">
                     Send/Upload all your CV's from any where to maya
                   </p>
                 </div>
@@ -129,7 +131,7 @@ export default function HowThisWorks({}: {}) {
             </div>
           </div>
         </div>
-        <div className="lg:mt-[1cm] w-full flex justify-center items-center">
+        <div className="mt-[1cm] w-full flex justify-center items-center ">
           <img className="h-[3cm] lg:h-[5cm]" src="/SVG/arrow.svg" alt="" />
         </div>
       </div>

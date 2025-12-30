@@ -62,21 +62,21 @@ export default function Need1000Section() {
       >
         <div className="lg:w-[86%] mx-auto w-full px-6 py-5 pb-5">
           <div className="flex flex-col lg:flex-row items-start ">
-            <div className="w-full lg:w-1/2 flex justify-end items-end pt-4  pl-4 lg:pl-[1cm]">
+            <div className="w-full lg:w-1/2 flex justify-end items-end    lg:pl-[1cm]">
               <div className=" animate-in w-full lg:w-[15cm] ">
-                <h1 className="leading-none text-5xl lg:text-8xl animate-in">
+                <h1 className=" text-3xl lg:text-8xl animate-in mb-1 lg:mb-0">
                   <span className="text-[#ff7a1a]">1000</span>
                   <span className="text-white">'s</span>
                 </h1>
 
-                <div className="animate-in text-2xl lg:text-3xl">
+                <div className="animate-in text-2xl lg:text-3xl leading-[0.9] lg:leading-relaxed ">
                   <span style={{ fontFamily: "DavidLibre" }}>
                     <span className=""> Of</span>
                     <span className=" lg:text-4xl ml-2 text-white ">
                       <span className="">HRs, Founders & Paying Clients</span>
                     </span>
 
-                    <span className=" lg:text-4xl leading-relaxed max-w-[44ch] text-white animate-in">
+                    <span className=" lg:text-4xl  max-w-[44ch] text-white animate-in">
                       Are Using <span className="">Maya On WhatsApp</span> for
                       Hiring And Finding Freelancer
                     </span>
@@ -84,7 +84,7 @@ export default function Need1000Section() {
 
                   <div className="flex  gap-3 sm:gap-4 mt-6 animate-in">
                     <Link href="/free">
-                      <button className=" lg:w-[6cm] w-auto p-3  gap-2 lg:px-5 lg:py-3 hover:scale-[1.03] transition-all text-white text-sm lg:text-lg rounded-full border  border-gray-300 flex justify-center items-center cursor-pointer">
+                      <button className=" lg:w-[6cm] w-auto p-3  gap-2 lg:px-5 lg:py-3 hover:scale-[1.03] transition-all text-white text-xs lg:text-lg rounded-full border  border-white flex justify-center items-center cursor-pointer">
                         <span>Need A Freelancer</span>
                         <IoMdHelp
                           className="text-[#F54A00]"
@@ -93,7 +93,7 @@ export default function Need1000Section() {
                       </button>
                     </Link>
                     <Link href="/hr">
-                      <button className="  lg:w-[6cm] w-auto p-3  gap-2 lg:px-5 lg:py-3 hover:scale-[1.03] transition-all text-white text-sm lg:text-lg rounded-full border  border-gray-300 flex justify-center items-center cursor-pointer">
+                      <button className="  lg:w-[6cm] w-auto p-3  gap-2 lg:px-5 lg:py-3 hover:scale-[1.03] transition-all text-white text-xs lg:text-lg rounded-full border  border-white flex justify-center items-center cursor-pointer">
                         <span>Are You Hiring</span>
                         <IoMdHelp
                           className="text-[#F54A00]"
@@ -106,7 +106,7 @@ export default function Need1000Section() {
               </div>
             </div>
 
-            <div className="w-full lg:w-1/2 flex justify-center lg:justify-end items-start animate-in mt-10 ">
+            <div className="w-full lg:w-1/2 flex justify-center lg:justify-end items-start animate-in mt-10 lg:mt-0  ">
               <div className="lg:absolute ">
                 <WhatsAppChatPhone />
               </div>

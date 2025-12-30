@@ -88,12 +88,12 @@ export default function FreeHowThisWork() {
                 className="flex justify-start items-start h-[34vh] rounded-lg border border-r-3 border-b-3 border-[#1f1f1f]  relative bg-[#FFEADA]"
               >
                 <img
-                  className="w-[3cm] mt-8 lg:mt-0 lg:w-[5cm] h-full object-contain  "
+                  className="w-[2cm] mt-14 lg:mt-0 lg:w-[5cm] h-full object-contain  "
                   src="/Images/maya2.png"
                   alt="cv pile"
                 />
                 <div className=" p-6">
-                  <h3 className="text-xl lg:text-2xl font-semibold text-[#151515] text-left ">
+                  <h3 className="text-lg lg:text-2xl  text-[#151515] text-left ">
                     Just tell
                     <span
                       style={{ fontFamily: "DavidLibre" }}
@@ -106,7 +106,7 @@ export default function FreeHowThisWork() {
                     project requirements
                   </h3>
 
-                  <div className="mt-4 text-sm md:text-base text-black text-left">
+                  <div className="mt-4 text-xs lg:text-base text-black text-left">
                     <div className="lg:flex gap-10">
                       <div className="flex gap-3">
                         <img
@@ -151,7 +151,7 @@ export default function FreeHowThisWork() {
           </div>
         </div>
 
-        <div className="lg:mt-[1cm] lg:mb-[1cm] w-full flex justify-center items-center">
+        <div className="mt-[1cm] w-full flex justify-center items-center">
           <img
             ref={arrowRef}
             className="h-[3cm] lg:h-[5cm]"

@@ -51,7 +51,7 @@ const FreeLancerHeroSection: React.FC = () => {
   return (
     <section
       ref={rootRef}
-      className="h-[60vh] lg:h-[69vh] flex flex-col items-center justify-center relative overflow-hidden font-sans selection:bg-orange-300 px-4 md:px-8"
+      className="min-h-[60vh] lg:min-h-[69vh] h-full flex flex-col items-center justify-center relative overflow-hidden font-sans selection:bg-orange-300 px-4 md:px-8"
       aria-label="Maya hiring hero"
     >
       <div className="relative z-10 w-full max-w-7xl">
@@ -62,7 +62,7 @@ const FreeLancerHeroSection: React.FC = () => {
           <h1
             ref={headlineRef}
             style={{ fontFamily: "DavidLibre" }}
-            className="text-2xl lg:text-5xl text-[#766F6A] font-semibold mb-4 md:mb-8 text-center "
+            className="text-xl lg:text-5xl text-[#766F6A]  mb-4 md:mb-8 text-center "
           >
             {" "}
             <span className=" text-black  mr-2">Stop asking</span>
@@ -77,7 +77,7 @@ const FreeLancerHeroSection: React.FC = () => {
 
           <p
             ref={subRef}
-            className="text-sm  lg:text-xl text-[#555555] max-w-2xl mx-auto  mb-8 font-semibold text-center mt-10 lg:mt-0 w-[7cm]  lg:w-auto "
+            className="text-xs  lg:text-xl text-[#555555] max-w-2xl mx-auto  mb-8 text-center mt-10 lg:mt-0 w-[7cm]  lg:w-auto "
           >
             Let Maya
             <span className=" text-orange-600 ">
@@ -100,7 +100,7 @@ const FreeLancerHeroSection: React.FC = () => {
               </span>
             </button>
           </div>
-          <p className="block lg:hidden   text-gray-600 text-sm sm:text-lg mt-10">
+          <p className="block lg:hidden   text-gray-600 text-xs lg:text-lg mt-10 ">
             <span className="font-bold text-black">1000+</span> HRs &amp;
             founders are already using Maya
           </p>
@@ -132,7 +132,7 @@ const FreeLancerHeroSection: React.FC = () => {
         </div>
       </div>
 
-      <p className="hidden lg:block  text-gray-600 text-sm sm:text-lg mt-20">
+      <p className="hidden lg:block  text-gray-600 text-sm lg:text-lg mt-20  ">
         <span className="font-bold text-black">1000+</span> HRs &amp; founders
         are already using Maya
       </p>

@@ -494,7 +494,7 @@ const AnimatedChat: React.FC = () => {
                       rotate: 45,
                       scale: 0.5,
                     },
-                    show: (i) => ({
+                    show: (i:any) => ({
                       opacity: 1,
                       y: 0,
                       rotate: 0,
@@ -520,7 +520,7 @@ const AnimatedChat: React.FC = () => {
                         },
                       },
                     }),
-                    exit: (i) => ({
+                    exit: (i:any) => ({
                       opacity: 0,
                       y: 30,
                       rotate: 45,
@@ -540,7 +540,7 @@ const AnimatedChat: React.FC = () => {
               </div>
             </div>
             {/* Bottom call to action */}
-            <div className="mt-16 px-4 text-center space-y-5">
+            <div className=" px-4 text-center space-y-5">
               <button
                 className={`text-white border border-white rounded-full px-8 py-3 font-semibold text-lg transition-all transform hover:scale-105 shadow-[0_0_15px_rgba(255,255,255,0.4),_0_0_5px_rgba(255,255,255,0.6)] duration-700 ${getAnimationClass(
                   6

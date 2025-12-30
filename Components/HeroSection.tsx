@@ -196,7 +196,7 @@ export default function HeroSection({ loadingProgress = 0, isLoading = false }: 
     <section
       ref={containerRef}
       className={`relative flex items-start justify-center overflow-hidden transition-all duration-500 ${
-        isLoading ? "h-screen" : "h-[70vh] lg:h-[80vh]"
+        isLoading ? "h-screen" : "min-h-[65vh] lg:min-h-[80vh] h-full"
       }`}
     >
       <div
@@ -204,20 +204,20 @@ export default function HeroSection({ loadingProgress = 0, isLoading = false }: 
         className="flex absolute inset-0 items-center justify-center pointer-events-none"
         aria-hidden="true"
       >
-        <div className="hero-circle absolute lg:top-[-23%] rounded-full border-2 border-dashed border-[#25170D]/20   lg:border-[#25170D]/35 animate-pulse w-[600px] h-[600px] lg:w-[1300px] lg:h-[1300px]" />
-        <div className="hero-circle absolute lg:top-[9%] rounded-full border-2 border-dashed border-[#25170D]/15  lg:border-[#25170D]/25  animate-pulse w-[450px] h-[450px]  lg:w-[800px] lg:h-[800px]" />
-        <div className="hero-circle absolute lg:top-[50%] rounded-full border-2 border-dashed border-[#25170D]/10   lg:border-[#25170D]/20  animate-pulse w-[240px] h-[240px] lg:w-[350px] lg:h-[350px]" />
+        <div className="hero-circle absolute lg:top-[-23%] rounded-full border-2 border-dashed border-[#25170D]/20   lg:border-[#25170D]/35 animate-pulse w-[600px] h-[600px] lg:w-[90%] lg:h-[180%]" />
+        <div className="hero-circle absolute lg:top-[9%] rounded-full border-2 border-dashed border-[#25170D]/15  lg:border-[#25170D]/25  animate-pulse w-[450px] h-[450px]  lg:w-[60%] lg:h-[180%]" />
+        <div className="hero-circle absolute lg:top-[50%] rounded-full border-2 border-dashed border-[#25170D]/10   lg:border-[#25170D]/20  animate-pulse w-[240px] h-[240px] lg:w-[30%] lg:h-[150%]" />
       </div>
 
       <div
         style={{ fontFamily: "DavidLibre" }}
-        className="relative z-10 w-full max-w-4xl mx-auto text-center pt-[3.5cm]  lg:pt-32 flex justify-center items-center flex-col gap-[1cm] px-6 lg:px-0"
+        className="relative z-10 w-full max-w-4xl mx-auto text-center pt-[1.5cm]  lg:pt-32 flex justify-center items-center flex-col gap-[1cm] px-6 lg:px-0"
       >
         
 
         <h1
           ref={headingRef}
-          className="text-3xl md:text-5xl w-[8cm]  lg:w-2xl  "
+          className=" text-2xl sm:text-3xl md:text-5xl w-[8cm]  lg:w-2xl  "
         >
           <span>
             <Highlighter action="highlight" color="#FFE5C0">
@@ -242,7 +242,7 @@ export default function HeroSection({ loadingProgress = 0, isLoading = false }: 
           ref={tryNowRef}
           onClick={openWhatsApp}
           aria-label="Open WhatsApp chat"
-          className="text-xl lg:hidden flex justify-center items-center bg-orange-600 px-6 py-2 text-white rounded-full border border-black border-b-4"
+          className="text-sm lg:hidden flex justify-center items-center bg-orange-600 px-4 py-1 text-white rounded-full border border-black border-b-4"
         >
           Try Now <GoArrowRight />
         </button>

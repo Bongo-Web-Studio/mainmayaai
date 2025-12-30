@@ -1,15 +1,11 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
 import Image from "next/image";
 import Link from "next/link";
-
 import { IoMdHelp } from "react-icons/io";
 import { ArrowRight, X } from "lucide-react";
-
-import gsap from "gsap";
-import { GoArrowRight } from "react-icons/go";
 import { WordRotate } from "./ui/word-rotate";
-import { BiRightArrow } from "react-icons/bi";
 
 const UserProfile = () => (
   <Link
@@ -191,14 +187,20 @@ const Navbar: React.FC = () => {
       {/* Subtle overlay when menu is open */}
       <div
         className={`fixed inset-0 z-40 md:hidden transition-opacity duration-300 ${
-          menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+          menuOpen
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none"
         }`}
         onClick={() => setMenuOpen(false)}
       >
         <div className="absolute inset-0 bg-black/20" />
       </div>
 
-      <nav className="w-full relative z-50" role="navigation" aria-label="Main navigation">
+      <nav
+        className="w-full relative z-50"
+        role="navigation"
+        aria-label="Main navigation"
+      >
         <div className="max-w-xl mx-auto py-4 px-4 md:px-0">
           <div
             ref={containerRef}
@@ -225,7 +227,9 @@ const Navbar: React.FC = () => {
                 <button
                   onClick={() => setMenuOpen(!menuOpen)}
                   className="flex items-center gap-1 cursor-pointer"
-                  aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+                  aria-label={
+                    menuOpen ? "Close navigation menu" : "Open navigation menu"
+                  }
                 >
                   {menuOpen ? (
                     <span className="flex items-center gap-1 text-[#25170D] font-medium">
@@ -243,7 +247,11 @@ const Navbar: React.FC = () => {
                         duration={2000}
                         className="text-[#F54A00] text-md font-normal"
                       />
-                      <ArrowRight aria-hidden="true" size={18} className="mr-2" />
+                      <ArrowRight
+                        aria-hidden="true"
+                        size={18}
+                        className="mr-2"
+                      />
                     </>
                   )}
                 </button>
@@ -261,10 +269,16 @@ const Navbar: React.FC = () => {
                 <Link href="/hr" onClick={() => setMenuOpen(false)}>
                   <button
                     className="w-full py-3 px-4 text-left font-medium border-2 border-[#25170D] rounded-lg hover:bg-[#25170D]/5 transition-all duration-200 flex items-center justify-between group"
-                    style={{ borderWidth: '1px 3px 4px 1px', transform: 'rotate(0deg)' }}
+                    style={{
+                      borderWidth: "1px 3px 4px 1px",
+                      transform: "rotate(0deg)",
+                    }}
                   >
                     <span>
-                      Are You <span className="text-[#F54A00] font-semibold">Hiring?</span>
+                      Are You{" "}
+                      <span className="text-[#F54A00] font-semibold">
+                        Hiring?
+                      </span>
                     </span>
                     <ArrowRight
                       size={18}
@@ -277,10 +291,16 @@ const Navbar: React.FC = () => {
                 <Link href="/free" onClick={() => setMenuOpen(false)}>
                   <button
                     className="w-full py-3 px-4 text-left font-medium border-2 border-[#25170D] rounded-lg hover:bg-[#25170D]/5 transition-all duration-200 flex items-center justify-between group"
-                    style={{ borderWidth: '1px 3px 4px 1px', transform: 'rotate(0deg)' }}
+                    style={{
+                      borderWidth: "1px 3px 4px 1px",
+                      transform: "rotate(0deg)",
+                    }}
                   >
                     <span>
-                      Need A <span className="text-[#F54A00] font-semibold">Freelancer?</span>
+                      Need A{" "}
+                      <span className="text-[#F54A00] font-semibold">
+                        Freelancer?
+                      </span>
                     </span>
                     <ArrowRight
                       size={18}
@@ -297,9 +317,17 @@ const Navbar: React.FC = () => {
                 >
                   <button
                     className="w-full py-3 px-4 text-center rounded-full text-white font-semibold bg-[#F54A00] border-2 border-[#010101] hover:bg-[#FF6900] hover:border-[#FF6900] transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98]"
-                    style={{ borderWidth: '1px 1px 5px 1px', transform: 'rotate(0.0deg)' }}
+                    style={{
+                      borderWidth: "1px 1px 5px 1px",
+                      transform: "rotate(0.0deg)",
+                    }}
                   >
-                    Try Now <ArrowRight aria-hidden="true" size={20} className="inline-block -rotate-45" />
+                    Try Now{" "}
+                    <ArrowRight
+                      aria-hidden="true"
+                      size={20}
+                      className="inline-block -rotate-45"
+                    />
                   </button>
                 </Link>
               </div>

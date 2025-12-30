@@ -87,15 +87,15 @@ export default function CTA() {
       >
         <h2
           style={{ fontFamily: "DavidLibre" }}
-          className="cta-animate text-4xl lg:text-6xl text-[#25170D] leading-tight font-semibold lg:w-[20cm] mx-auto"
+          className="cta-animate text-3xl lg:text-6xl text-black leading-tight font-semibold lg:w-[20cm] mx-auto"
         >
-          Just tell maya what you need
-          <span className="text-green-500"> On WhatsApp</span>
+          Just tell maya what you need On
+          <span className="text-green-500">  WhatsApp</span>
         </h2>
 
         <div className="cta-animate mt-10 flex justify-center items-center p-2">
-          <div className="relative flex items-center w-[8cm] lg:w-lg h-14 bg-white rounded-full border border-b-4 hover:border-b border-black">
-            <div className="px-4 text-gray-500 text-xl flex items-center">
+          <div className="relative flex items-center w-[7cm] lg:w-lg  h-12 lg:h-14 bg-white rounded-full border border-b-4 hover:border-b border-black">
+            <div className="px-4 text-gray-500 text-base lg:text-xl flex items-center">
               <BsEmojiSmile />
             </div>
 
@@ -104,22 +104,22 @@ export default function CTA() {
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               placeholder="Tell Maya what you are looking for..."
-              className="flex-grow h-full bg-transparent text-gray-700 placeholder-gray-500 focus:outline-none text-base"
+              className="flex-grow h-full bg-transparent text-gray-700 placeholder-gray-500 focus:outline-none text-xs lg:text-base"
               aria-label="Message to Maya"
             />
 
-            <div className="px-4 text-gray-500 text-xl flex items-center">
+            <div className="px-4 text-gray-500 text-base lg:text-xl flex items-center">
               <SlPaperClip />
             </div>
           </div>
 
           <button
             onClick={handleSend}
-            className="ml-2 px-4 py-4 lg:w-14 lg:h-14 rounded-full flex justify-center items-center shadow-lg transform active:scale-95 transition-transform duration-150 bg-[#1CAB5F] border border-b-4 border-r-2 hover:border-b border-black"
+            className="ml-2 px-4 py-4 lg:w-14 h-12 lg:h-14 rounded-full flex justify-center items-center shadow-lg transform active:scale-95 transition-transform duration-150 bg-[#1CAB5F] border border-b-4 border-r-2 hover:border-b border-black"
             aria-label="Send message to WhatsApp"
             title="Send via WhatsApp"
           >
-            <IoSend className="text-white text-2xl" />
+            <IoSend className="text-white text-lg lg:text-2xl" />
           </button>
         </div>
       </div>

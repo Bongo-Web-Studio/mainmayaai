@@ -49,7 +49,7 @@ export default function Image() {
   return (
     <div
       ref={wrapperRef}
-      className="w-full h-full flex items-center justify-center relative"
+      className="w-full h-full flex items-center justify-center relative p-3"
     >
       {/* show on large screens (laptop/desktop) only */}
       <img
@@ -64,7 +64,7 @@ export default function Image() {
         ref={phoneRef}
         src="/Images/iPhone 16 Pro - 2.svg"
         alt="phone mockup"
-        className="block lg:hidden w-full h-full object-contain"
+        className="block lg:hidden w-full h-full object-contain "
       />
     </div>
   );

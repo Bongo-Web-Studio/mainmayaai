@@ -50,7 +50,7 @@ const HRHeroSection: React.FC = () => {
   return (
     <section
       ref={rootRef}
-      className="h-[60vh] lg:h-[69vh] flex items-start justify-center relative overflow-hidden font-sans selection:bg-orange-300 px-4 md:px-8"
+      className="min-h-[60vh] lg:min-h-[69vh] h-full flex items-start justify-center relative overflow-hidden font-sans selection:bg-orange-300 px-4 md:px-8"
       aria-label="Maya hiring hero"
     >
       <div
@@ -64,27 +64,27 @@ const HRHeroSection: React.FC = () => {
       <div className="relative z-10 w-full max-w-7xl">
         <div
           ref={cardRef}
-          className="w-full bg-[#FFEFE3] border border-r-2 border-b-4 border-black rounded-lg px-6 py-12 md:py-16 text-center relative shadow-[0_2px_0px_rgba(0,0,0,0.08)]"
+          className="w-full bg-[#FFEFE3] border border-r-2 border-b-4 border-black rounded-lg px-6 py-12 md:py-16 text-center relative"
         >
           <h1
             ref={headlineRef}
             style={{ fontFamily: "DavidLibre" }}
-            className="text-4xl md:text-6xl text-[#8E8E8E] mt-10 mb-4 md:mb-8 tracking-wide font-extrabold"
+            className="text-3xl lg:text-6xl text-[#8E8E8E] mt-10  lg:mb-8 tracking-wide font-extrabold"
           >
-            Too many CVs? <br className="lg:hidden" />{" "}
-            <span className="text-black ">Hand them to </span>
-            <span className="text-[#F54A00]  ">Maya</span>
+            Too many CVs? <br className="lg:hidden" />
+            <span className="text-black">Hand them to </span>
+            <span className="text-orange-600">Maya</span>
           </h1>
 
           <p
             ref={subRef}
-            className="text-base sm:text-lg md:text-xl text-[#555555] lg:max-w-2xl mx-auto leading-relaxed mb-8  font-semibold mt-10"
+            className="text-xs lg:text-xl text-[#555555] lg:max-w-2xl mx-auto leading-relaxed mb-8  font-semibold mt-10"
           >
             She{" "}
-            <span className=" text-[#F54A00]">talks to 1000+ applicants</span>{" "}
+            <span className=" text-orange-600">talks to 1000+ applicants</span>{" "}
             on your behalf
-            <br className="hidden lg:block" />
-            &amp; sends profiles that fit in your{" "}
+            <br className="" />
+            sends profiles that fit in your <br className="block lg:hidden" />
             <span className="text-black">budget + timeline + experience</span>
           </p>
 
@@ -95,7 +95,7 @@ const HRHeroSection: React.FC = () => {
             <button
               onClick={openWhatsApp}
               type="button"
-              className="group px-6 py-2 rounded-full border border-b-4 border-black  bg-[#F54A00] hover:border-b-2 text-white font-medium flex items-center gap-2 transition-all duration-200 shadow-[0_2px_10px_rgba(255,107,53,0.12)]"
+              className="group  px-4 py-1 rounded-full border border-b-4 border-black  bg-orange-600  hover:border-b-2 text-white flex items-center gap-2 transition-all duration-300 text-sm lg:text-lg cursor-pointer"
               aria-label="Try Maya now"
             >
               Try Now
@@ -105,7 +105,7 @@ const HRHeroSection: React.FC = () => {
             </button>
           </div>
 
-          <p ref={socialRef} className="text-gray-600 text-sm sm:text-lg">
+          <p ref={socialRef} className="text-neutral-600 text-xs lg:text-lg">
             <span className="font-bold text-black">1000+</span> HRs &amp;
             founders are already using Maya
           </p>

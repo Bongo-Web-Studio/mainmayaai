@@ -43,7 +43,8 @@ export default function Page() {
       if (audioUnlockedRef.current) return;
 
       const extendedWindow = window as WindowWithAudio;
-      const AudioContextClass = window.AudioContext || extendedWindow.webkitAudioContext;
+      const AudioContextClass =
+        window.AudioContext || extendedWindow.webkitAudioContext;
 
       if (AudioContextClass) {
         const ctx = new AudioContextClass();
@@ -68,9 +69,12 @@ export default function Page() {
   }, []);
 
   return (
-    <div className="bg-[#FFF4EC] w-full h-full overflow-hidden">
+    <div className="bg-[#FFF4EC]  w-full h-full overflow-hidden">
       <Navbar />
-      <HeroSection loadingProgress={loadingProgress} isLoading={!assetsLoaded} />
+      <HeroSection
+        loadingProgress={loadingProgress}
+        isLoading={!assetsLoaded}
+      />
       {assetsLoaded && <AnimatedChat />}
       <Need1000Section />
       <Video />
