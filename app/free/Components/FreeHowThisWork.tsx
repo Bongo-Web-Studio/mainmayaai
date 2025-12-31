@@ -85,7 +85,7 @@ export default function FreeHowThisWork() {
             <div className="flex items-center gap-6 md:gap-8">
               <div
                 ref={firstCardRef}
-                className="flex justify-start items-start h-[34vh] rounded-lg border border-r-3 border-b-3 border-[#1f1f1f]  relative bg-[#FFEADA]"
+                className="w-full flex justify-start items-start h-[34vh] rounded-lg border border-r-3 border-b-3 border-[#1f1f1f]  relative bg-[#FFEADA]"
               >
                 <img
                   className="w-[2cm] mt-14 lg:mt-0 lg:w-[5cm] h-full object-contain  "
@@ -93,7 +93,7 @@ export default function FreeHowThisWork() {
                   alt="cv pile"
                 />
                 <div className=" p-6">
-                  <h3 className="text-lg lg:text-2xl  text-[#151515] text-left ">
+                  <h3 className="text-xl lg:text-2xl  text-[#151515] text-left ">
                     Just tell
                     <span
                       style={{ fontFamily: "DavidLibre" }}

@@ -57,7 +57,7 @@ export default function FreeNew1() {
         <div ref={topBlockRef} className=" flex items-center justify-center">
           <div className="flex items-center w-full lg:max-w-[18cm]  lg:ml-36">
             <div className="lg:flex justify-start items-start  rounded-lg w-full ">
-              <div className="text-2xl lg:text-4xl font-semibold text-[#151515] text-start w-[50%]  ml-16 lg:mx-0">
+              <div className="text-2xl lg:text-4xl font-semibold text-[#151515] text-start w-[50%]  ml-10 lg:mx-0">
                 <div className="text-start  text-[#948E89] italic mt-8">then ,</div>
                 <div
                   className="mt-8  w-[8cm] lg:w-auto"
@@ -85,7 +85,7 @@ export default function FreeNew1() {
         <div ref={bottomBlockRef} className=" flex items-center justify-center">
           <div className="flex items-center w-full lg:max-w-[19cm]  lg:ml-44">
             <div className="lg:flex justify-start items-start  rounded-lg w-full ">
-              <div className="text-2xl lg:text-4xl font-semibold text-[#151515] text-start w-[50%]  ml-16 lg:mx-0">
+              <div className="text-2xl lg:text-4xl font-semibold text-[#151515] text-start w-[50%]  ml-10 lg:mx-0">
                 <div className="mt-20 w-[8cm] lg:w-auto">
                   <span className="text-[#F54A00] italic"> Confirms </span>
                   the budget, timeline, availability, past exp & intent

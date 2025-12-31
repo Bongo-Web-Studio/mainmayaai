@@ -57,12 +57,12 @@ const FreeLancerHeroSection: React.FC = () => {
       <div className="relative z-10 w-full max-w-7xl">
         <div
           ref={cardRef}
-          className="bg-[#FFEFE3] border-2 border-orange-600  rounded-2xl px-6 py-12 md:py-16 text-center relative "
+          className="bg-[#FFEFE3] border-2 border-orange-600  rounded-2xl  py-12 md:py-16 text-center relative "
         >
           <h1
             ref={headlineRef}
             style={{ fontFamily: "DavidLibre" }}
-            className="text-xl lg:text-5xl text-[#766F6A]  mb-4 md:mb-8 text-center "
+            className="text-2xl lg:text-5xl text-[#766F6A]  mb-4 lg:mb-8 text-center mt-10 lg:mt-0"
           >
             {" "}
             <span className=" text-black  mr-2">Stop asking</span>
@@ -91,7 +91,7 @@ const FreeLancerHeroSection: React.FC = () => {
             <button
               onClick={openWhatsApp}
               type="button"
-              className="group px-6 py-2 rounded-full border border-b-4 border-black bg-orange-600  hover:border-b-2 text-white font-medium flex items-center gap-2  transition-all duration-200 shadow-[0_2px_10px_rgba(255,107,53,0.12)]"
+              className="group px-4 py-1 rounded-full border border-b-4 border-black  bg-orange-600  hover:border-b-2 text-white flex items-center gap-2 transition-all duration-300 text-sm lg:text-lg cursor-pointer"
               aria-label="Try Maya now"
             >
               Try Now
