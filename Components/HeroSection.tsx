@@ -242,7 +242,7 @@ export default function HeroSection({ loadingProgress = 0, isLoading = false }: 
           ref={tryNowRef}
           onClick={openWhatsApp}
           aria-label="Open WhatsApp chat"
-          className="text-sm lg:hidden flex justify-center items-center bg-orange-600 px-4 py-1 text-white rounded-full border border-black border-b-4"
+          className="text-sm lg:text-xl flex justify-center items-center bg-orange-600 px-4 py-1 text-white rounded-full border border-black border-b-4"
         >
           Try Now <GoArrowRight />
         </button>

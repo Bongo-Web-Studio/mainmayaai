@@ -441,7 +441,7 @@ const AnimatedChat: React.FC = () => {
               }`}
             >
               <div className="shadow-2xl font-medium p-4 rounded-xl rounded-tl-none text-lg md:text-xl bg-white/90 backdrop-blur-[10px] text-black max-w-[70%] md:max-w-xs">
-                {`Hey 👋 I’m Maya — your AI Intern for work. `}
+                {`Hey 👋, I’m Maya- a super AI built by IITians for job seekers & freelancers`}
                 {/* <TextAnimate animation="slideRight" by="word" as="p" className='text-md font-normal' delay={0.3} duration={0.8}>
                             </TextAnimate> */}
               </div>
@@ -454,21 +454,21 @@ const AnimatedChat: React.FC = () => {
               }`}
             >
               <div className="shadow-2xl font-medium p-4 rounded-xl text-lg md:text-xl bg-white/90 backdrop-blur-[10px] text-black/80 max-w-[90%]">
-                You tell me what you need — like finding a
+                I help 1000s of founders, HR’s and paying clients all around the world to connect with the right talent in their budget & scope<br/><br/>
                 <strong className="font-semibold text-black/80">
                   {" "}
-                  job/gig, hiring a tech lead, finding a freelancer, or looking
-                  for a service/vendor.{" "}
+                  I keep sharing your CV/portfolio to people who need you directly on WhatsApp{" "}
                 </strong>{" "}
                 <br />
+                
                 <br />
-                I’ll do the boring part for you:
+                Are you a job seeker/freelancer or looking to hire someone?
                 <br />
-                <ol className="list-none pl-2 mt-2">
+                {/* <ol className="list-none pl-2 mt-2">
                   <li>🔍 Find the right people </li>
                   <li>💬 Talk to them on your behalf </li>
                   <li>🫱🏻‍🫲🏽 Connect you when it’s a match</li>
-                </ol>
+                </ol> */}
                 {/* <TextAnimate animation="slideUp" by="word" as="p" className='text-md font-normal' delay={0.3} duration={0.8}>
                                 {`So basically, I'm an AI\nprofessional network- think of\nme as a giant professional\ncircle with 100,000+ people\n—founders, freelancers,\nrecruiters, investors, agencies\n—all just one chat away.`}
 
